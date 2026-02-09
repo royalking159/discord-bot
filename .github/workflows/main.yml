@@ -1,18 +1,17 @@
-name: Discord Bot
+name: Discord Bot (Auto-Restart)
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/30 * * * *"   # every 30 minutes
 
 jobs:
-  run-bot:
+  bot:
     runs-on: ubuntu-latest
     timeout-minutes: 350
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -21,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install discord.py python-dotenv
+          pip install -U discord.py python-dotenv
 
       - name: Run bot
         env:
