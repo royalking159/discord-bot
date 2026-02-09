@@ -191,11 +191,6 @@ async def ping(interaction: discord.Interaction):
     embed.add_field(name="WebSocket Latency", value=f"{api_latency} ms", inline=True)
 
     await interaction.response.send_message(embed=embed, ephemeral=True)
-
-#-------------------- ... ---------------------------
-@tree.command(name="say", description="(make the bot say something")
-async def say(ctx, *, text):
-    await ctx.send(text)
 #-------------------- LOCKDOWN -----------------------
 @tree.command(name="lockdown", description="Lock the server")
 @app_commands.describe(level="Level of lockdown", duration="Duration like 1h30m", reason="Reason for lockdown")
